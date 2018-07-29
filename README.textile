@@ -1,0 +1,29 @@
+
+h1. Berymedia
+
+Berymedia is a social platform, where you can post articles, projects and courses, all your contributions are reward by project currency called berycoin.
+
+we have categorized user in two, 
+
+Ranks
+Roles
+
+Ranks is something you get by earning berycoins, which you can do so by posting articles, doing projects and/or posting courses on subjects which you mastered.
+When you earn Berycoins your rank goes up, which unlocks more perks and privillages 
+
+While Roles are awarded by project leaders, they can bring additional rewards, as we need to fight spam posts, and maintain quality.
+
+h2. Dependencies
+
+Before generating your application, you will need:
+
+* The Ruby language - version 2.3.1
+* The Rails gem - version 5.0
+
+h3. Installation 
+
+* git clone https://github.com/berycoin-project/berymedia.git
+* cd berymedia
+* rake db:migrate
+* rake db:seed
+* rails server

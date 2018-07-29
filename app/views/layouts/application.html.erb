@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="../my_assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../my_assets/img/favicon.png">
+
+  <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'>
+  <title><%= content_for?(:title) ? yield(:title) : "BeryMedia" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Lets succeed together" %>">
+
+  <%= render 'layouts/header' %>
+
+  <%= csrf_meta_tags %>
+
+
+</head>
+<body class="">
+
+<div class="wrapper ">
+  <div class="sidebar" data-color="red">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
+  -->
+    <div class="logo">
+      <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        BM
+      </a>
+      <a href="http://www.creative-tim.com" class="simple-text logo-normal">
+        BeryMedia
+      </a>
+      <div class="navbar-minimize">
+        <button id="minimizeSidebar" class="btn btn-simple btn-icon btn-neutral btn-round">
+          <i class="now-ui-icons text_align-center visible-on-sidebar-regular"></i>
+          <i class="now-ui-icons design_bullet-list-67 visible-on-sidebar-mini"></i>
+        </button>
+      </div>
+    </div>
+    <div class="sidebar-wrapper">
+      <div class="user">
+        <div class="photo">
+          <img src="../my_assets/img/berycoin.png" />
+        </div>
+        <div class="info">
+          <a data-toggle="collapse" href="#collapseExample" class="collapsed">
+          <span>
+            BeryMedia
+          <b class="caret"></b>
+          </span>
+          </a>
+          <div class="clearfix"></div>
+          <div class="collapse" id="collapseExample">
+            <ul class="nav">
+              <%= render 'layouts/nav_links_for_auth' %>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="nav">
+        <%= render 'layouts/navigation' %>
+        <%= render 'layouts/navigation_more' %>
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+      <div class="container-fluid">
+
+        <div class="navbar-wrapper">
+          <div class="navbar-toggle">
+            <button type="button" class="navbar-toggler">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </button>
+          </div>
+          <a class="navbar-brand"><%= content_for?(:head) ? yield(:head) : "BeryMedia" %></a>
+
+        </div>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index"
+                aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+          <%= content_for?(:top_menu) ? yield(:top_menu) : "" %>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+    <div class="panel-header panel-header">
+      <div class="header text-center">
+        <h2 class="title"><%= content_for?(:head) ? yield(:head) : "BeryMedia" %></h2>
+        <p class="category"> <%= content_for?(:short) ? yield(:short) : "Lets succeed together" %>
+          </br>
+          <% if content_for?(:lins) %>
+            <%= yield(:lins) %>
+            <%= content_for?(:menu)? yield(:menu) : "" %>
+          <%  else %>
+            <a target="_blank" href="http://berycoin.com"> www.berycoin.com </a>
+            |
+            <a target="_blank" href="http://github.com/berycoin-project">Github Repo</a>
+            |
+            <a target="_blank" href="http://facebook.com/bhbigheart">Facebook</a>
+          <%  end %>
+        </p>
+      </div>
+    </div>
+    <div class="content">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+<script>
+    $('.nav').on('click', 'li', function () {
+        $('.nav li.active').removeClass('active');
+        $(this).addClass('active');
+    });
+    $(document).ready(function() {
+        // initialise Datetimepicker and Sliders
+        demo.initDateTimePicker();
+        if ($('.slider').length != 0) {
+            demo.initSliders();
+        }
+    });
+    $(document).ready(function () {
+        $('.summernote').summernote({
+            placeholder: 'Type your project content here',
+            tabsize: 2,
+            height: 300,
+            focus: true
+        });
+    });
+</script>
+<%= render 'shared/footer' %>
+</html>
+
+

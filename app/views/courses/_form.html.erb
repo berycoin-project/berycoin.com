@@ -1,0 +1,30 @@
+<div class="authform">
+
+<%= form_for(course) do |f| %>
+  <% if course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(course.errors.count, "error") %> prohibited this course from being saved:</h2>
+
+      <ul>
+      <% course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title , class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description , class: 'form-control'%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-info' %>
+  </div>
+<% end %>
+</div>

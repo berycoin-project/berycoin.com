@@ -1,0 +1,187 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-3 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="statistics statistics-horizontal">
+            <div class="info info-horizontal">
+              <div class="row">
+                <div class="col-5">
+                  <div class="icon icon-primary icon-circle">
+                    <i class="fab fa-nutritionix"></i>
+                  </div>
+                </div>
+                <div class="col-7 text-right">
+                  <h3 class="info-title">Funds</h3>
+                  <h6 class="stats-title"><%= @project.budget %> BERY </h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-footer ">
+          <div class="stats">
+            <i class="fab fa-nutritionix"></i> Total Budget
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="statistics statistics-horizontal">
+            <div class="info info-horizontal">
+              <div class="row">
+                <div class="col-5">
+                  <div class="icon icon-warning icon-circle">
+                    <i class="fa fa-gem"></i>
+                  </div>
+                </div>
+                <div class="col-7 text-right">
+                  <h3 class="info-title"><%= @project.votes.count %></h3>
+                  <h6 class="stats-title">Votes</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-footer ">
+          <div class="stats">
+            <i class="fa fa-check"></i> Total weight
+            <span class="text-success"> <b class="text-primary"><%= @project.votes.sum(&:weight) %></b> </span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="statistics statistics-horizontal">
+            <div class="info info-horizontal">
+              <div class="row">
+                <div class="col-5">
+                  <div class="icon icon-danger icon-circle">
+                    <i class="fa fa-comments"></i>
+                  </div>
+                </div>
+                <div class="col-7 text-right">
+                  <h3 class="info-title"><%= @comments.count %></h3>
+                  <h6 class="stats-title">Comments</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-footer ">
+          <div class="stats">
+            <i class="now-ui-icons ui-2_chat-round"></i> Total Comments
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="statistics statistics-horizontal">
+            <div class="info info-horizontal">
+              <div class="row">
+                <div class="col-5">
+                  <div class="icon icon-info icon-circle">
+                    <i class="now-ui-icons objects_support-17"></i>
+                  </div>
+                </div>
+                <div class="col-7 text-right">
+                  <span class="btn btn-default"><%= @project.statuses.first.name %></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr>
+        <div class="card-footer ">
+          <div class="stats">
+            <i class="now-ui-icons arrows-1_refresh-69"></i> Project Status
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card ">
+        <div class="card-header ">
+          <h4 class="card-title"> <%= @project.users.first.name  %>'s project -
+            <small class="description"><%= @project.title %></small>
+          </h4>
+        </div>
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="progress-container">
+                <span class="progress-badge">Against</span>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="10"
+                       aria-valuemin="0" aria-valuemax="100" style="width:10%">
+                    <span class="progress-value">10%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6">
+              <div class="progress-container">
+                <span class="progress-badge">Favor</span>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="90"
+                       aria-valuemin="0" aria-valuemax="100" style="width:90%">
+                    <span class="progress-value">90%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          </br>
+          </br>
+          <div class="row">
+            <div class="col-lg-12 col-md-12">
+
+              <h5 class="card-category"><%= @project.title %></h5>
+              <p>
+                  <%= @project.content.html_safe %>
+              </p>
+              <p>
+                  <%= link_to 'Edit', edit_project_path(@project), class: "btn btn-info" %>
+                  <%= link_to 'Back', projects_path, class: "btn btn-default" %>
+              </p>
+            </div>
+          </div>
+          </br>
+
+        </div>
+      </div>
+      <%= render 'comment_form' %>
+      <%= render 'comments' %>
+    </div>
+    <div class="col-md-4">
+      <%= render 'votes' %>
+    </div>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <%= @project.title %>
+<% end %>
+<% content_for :short do %>
+  <%= " We are planning to create a web application for all the dentists, providing them an online resource, through which they can interact with their patients " %>
+<% end %>
+<% content_for :lins do %>
+  <a href=""> Budget  <b><%= @project.budget %> <i class="fab fa-nutritionix"></i></b> </a>
+  |
+  <a href=""> <%= @project.votes.count %> <i class="fa fa-gem"></i></a>
+  |
+  <a href=""> <%= @comments.count %> <i class="fa fa-comments"></i></a>
+  |
+  <a href="http://localhost:3000/users/<%= @project.users.first.id %>"> by <%= @project.users.first.name %> </a>
+<% end %>

@@ -1,0 +1,23 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Show Record</h5>
+        </div>
+        <div class="card-body">
+
+        <p id="notice"><%= notice %></p>
+
+                <p>
+          <strong>Name:</strong>
+          <%= @reaction.name %>
+        </p>
+
+                <%= link_to 'Edit', edit_reaction_path(@reaction), class: "btn btn-info" %> |
+        <%= link_to 'Back', reactions_path, class: "btn btn-default"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

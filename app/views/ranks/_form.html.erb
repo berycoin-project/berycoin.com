@@ -1,0 +1,40 @@
+<div class="authform">
+
+<%= form_for(rank) do |f| %>
+  <% if rank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rank.errors.count, "error") %> prohibited this rank from being saved:</h2>
+
+      <ul>
+      <% rank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name , class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :value %>
+    <%= f.text_field :value , class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :article_reward %>
+    <%= f.text_field :article_reward , class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :project_reward %>
+    <%= f.text_field :project_reward , class: 'form-control'%>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: 'btn btn-info' %>
+  </div>
+<% end %>
+</div>

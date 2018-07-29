@@ -1,0 +1,83 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Show Record</h5>
+        </div>
+        <div class="card-body">
+
+        <p id="notice"><%= notice %></p>
+
+                <p>
+          <strong>Title:</strong>
+          <%= @course.title %>
+        </p>
+
+                <p>
+          <strong>Description:</strong>
+          <%= @course.description %>
+        </p>
+        <%= link_to 'Edit', edit_course_path(@course), class: "btn btn-info" %> |
+        <%= link_to 'Back', courses_path, class: "btn btn-default"%>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= form_for @comment, url: course_comments_path(@course.id) do |f| %>
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category">Comment Here</h5>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <%= f.text_area :content, class: 'form-control', placeholder: 'Type comment here' %>
+            </div>
+            <div class="actions">
+              <%= f.submit class: 'btn btn-info' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <% @comments.each do |c| %>
+        <div class="card card-chart">
+          <div class="card-header">
+            <h5 class="card-category"><%= c.users.first.name %> says</h5>
+          </div>
+          <div class="card-body">
+            <div class="col-lg-12">
+              <p>
+                <i class="fa fa-comments"></i> <%= c.content %>
+              </p>
+            </div>
+            <div class="col-lg-4">
+              <i class="fa fa-clock-o text-info">
+                          <span>
+                            <%= time_ago_in_words c.created_at %> ago
+                          </span>
+              </i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% content_for :head do %>
+  <%= @course.title %>
+<% end %>
+<% content_for :short do %>
+  <%= "This is Best course of all the times, It has a lot of interesting lectures that helped me a lot in my studies. " %>
+<% end %>
+<% content_for :lins do %>
+  <a href=""> Total Reward: <b>50,000</b> </a>
+  |
+  <a href=""> <i class="fa fa-comments"></i> <%= @comments.count %> </a>
+  |
+  <a href="http://localhost:3000/users/<%= @course.users.first.id %>"> by <%= @course.users.first.name %> </a>
+<% end %>

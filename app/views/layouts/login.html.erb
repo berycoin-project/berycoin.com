@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <link rel="apple-touch-icon" sizes="76x76" href="../my_assets/img/apple-icon.png">
+  <link rel="icon" type="image/png" href="../my_assets/img/favicon.png">
+
+  <meta name="viewport" content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no'>
+  <title><%= content_for?(:title) ? yield(:title) : "BeryMedia" %></title>
+  <meta name="description" content="<%= content_for?(:description) ? yield(:description) : "Lets succeed together" %>">
+
+  <%= render 'layouts/header' %>
+
+  <%= csrf_meta_tags %>
+
+
+</head>
+<body class="">
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg navbar-transparent  navbar-absolute bg-primary fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-wrapper">
+      <div class="navbar-toggle">
+        <button type="button" class="navbar-toggler">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </button>
+      </div>
+      <a class="navbar-brand" href="#pablo"><i class="fa fa-user"></i> Login Page</a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+      <span class="navbar-toggler-bar navbar-kebab"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navigation">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <%= link_to root_path, class: 'nav-link' do %>
+            <i class="now-ui-icons design_app"></i>
+            <p> Home </p>
+          <% end %>
+        </li>
+                    <li class="nav-item">
+                        <%= link_to projects_path, class: 'nav-link' do %>
+                            <i class="fa fa-graduation-cap"></i>
+                            <p>Projects</p>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to articles_path, class: 'nav-link' do %>
+                            <i class="fa fa-archive"></i>
+                            <p>Articles</p>
+                        <% end %>
+                    </li>
+                    <li class="nav-item">
+                        <%= link_to courses_path, class: 'nav-link' do %>
+                            <i class="fa fa-book"></i>
+                            <p>Courses</p>
+                        <% end %>
+                    </li>
+                    <% if user_signed_in? %>
+                    <li <% if dashboard_path -%>class="nav-item active" <% else -%>class="nav-item" <% end -%>>
+                        <%= link_to dashboard_path, class: 'nav-link btn btn-neutral' do %>
+                        <i class="now-ui-icons ui-1_settings-gear-63"></i>
+                        <p>My Dashboard</p>
+                        <% end %>
+                    </li>
+                    <% else %>
+                    <li <% if current_page?(new_user_session_path) -%>class="nav-item active" <% else -%>class="nav-item" <% end -%>>
+                        <%= link_to new_user_session_path, class: 'nav-link' do %>
+                            <i class="fa fa-sign-in-alt"></i>
+                            <p>Login</p>
+                        <% end %>
+                    </li>
+                    <li <% if current_page?(new_user_registration_path) -%>class="nav-item active" <% else -%>class="nav-item" <% end -%>>
+                        <%= link_to new_user_registration_path, class: 'nav-link' do %>
+                            <i class="fa fa-user-plus"></i>
+                            <p>Register</p>
+                        <% end %>
+                    </li>
+                    <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- End Navbar -->
+<div class="wrapper wrapper-full-page ">
+  <div class="full-page login-page section-image" filter-color="black" data-image="../my_assets/img/bg3.jpg">
+    <!--   you can change the color of the filter page using: data-color="blue | purple | green | orange | red | rose " -->
+    <div class="content">
+      <div class="container">
+        <div class="col-md-4 ml-auto mr-auto">
+          <%= render 'layouts/messages' %>
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="container-fluid">
+        <nav>
+          <ul>
+            <li>
+              <%= link_to 'Project', 'http://localhost:3000/projects' %>
+            </li>
+            <li>
+              <%=	link_to 'About', about_path  %>
+            </li>
+            <li>
+              <%=	link_to 'Berycoin', 'http://www.berycoin.com'  %>
+            </li>
+          </ul>
+        </nav>
+        <div class="copyright">
+          &copy;
+          <script>
+              document.write(new Date().getFullYear())
+          </script>, Designed for
+          <a href="https://www.berymedia.com" target="_blank">Berymedia</a>. Designed by
+          <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>.
+        </div>
+      </div>
+    </footer>
+  </div>
+</div>
+</body>
+<script>
+    $(document).ready(function() {
+        demo.checkFullPageBackgroundImage();
+    });
+</script>
+<%= render 'shared/footer' %>
+</html>

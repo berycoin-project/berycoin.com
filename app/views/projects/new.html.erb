@@ -1,0 +1,29 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Insert New</h5>
+          <h2 class="card-title">New Project</h2>
+        </div>
+        <div class="card-body">
+            
+
+            <%= render 'form', project: @project %>
+
+            <%= link_to 'Back', projects_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%	 content_for :top do %>
+  <!-- include libraries(jQuery, bootstrap) -->
+  <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+  <!-- include summernote css/js -->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+<%	 end %>

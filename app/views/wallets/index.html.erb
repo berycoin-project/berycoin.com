@@ -1,0 +1,250 @@
+<div class="content">
+<div class="row">
+      <div class="col-lg-3 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="statistics statistics-horizontal">
+              <div class="info info-horizontal">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="icon icon-primary icon-circle">
+                      <i class="fab fa-nutritionix"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 text-right">
+                    <h3 class="info-title">Funds</h3>
+                    <h6 class="stats-title"><%= @totalBalance %> BERY </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="card-footer ">
+            <div class="stats">
+              <i class="fab fa-nutritionix"></i> Total funds
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="statistics statistics-horizontal">
+              <div class="info info-horizontal">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="icon icon-warning icon-circle">
+                      <i class="fa fa-heart"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 text-right">
+                    <h3 class="info-title"><%= @wallets.count %></h3>
+                    <h6 class="stats-title">Wallets</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="card-footer ">
+            <div class="stats">
+              <i class="fa fa-check"></i> Wallets
+              <span class="text-success"> <b class="text-primary"><%= @wallets.count %></b> </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="statistics statistics-horizontal">
+              <div class="info info-horizontal">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="icon icon-danger icon-circle">
+                      <i class="fa fa-archive"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 text-right">
+                    <h3 class="info-title">VEST</h3>
+                    <h6 class="stats-title"><%= @vests.sum(&:balance) %> BERY</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="card-footer ">
+            <div class="stats">
+              <i class="fa fa-archive"></i>
+              <% if is_vest_empty?%>
+                Empty Vest
+              <% elsif is_payout? %>
+                <%= link_to divest_path, method: :post do %>
+                  <span class="btn btn-sm btn-success">Divest All</span>
+                <% end %>
+              <% else %>
+                Available in <%= time_ago_in_words @vests.first.expire_at %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6">
+        <div class="card card-stats">
+          <div class="card-body ">
+            <div class="statistics statistics-horizontal">
+              <div class="info info-horizontal">
+                <div class="row">
+                  <div class="col-5">
+                    <div class="icon icon-info icon-circle">
+                      <i class="now-ui-icons objects_support-17"></i>
+                    </div>
+                  </div>
+                  <div class="col-7 text-right">
+                    <span class="btn btn-default"><%= @ranks.first.name.capitalize %></span>
+                    <h6 class="stats-title"><%= @ranks.first.value %> BERY</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="card-footer ">
+            <div class="stats">
+              <i class="now-ui-icons objects_support-17"></i> Rank & it's Value
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="row">
+    <div class="col-lg-6 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h4 class="card-title">Wallets</h4>
+          <%= link_to 'Create New Address', new_wallet_path, class: 'btn btn-info' %>
+          <p class="text-warning"> In order to deposit berycoins to your funds, send <b>ONLY</b> berycoins to one of these addresses,
+            <b>DO NOT</b> send any other coins to these addresses </p>
+        </div>
+        <div class="card-body">
+
+          <table class="table table-responsive">
+            <tbody>
+            <% @wallets.each do |wallet| %>
+              <tr>
+
+                <td class="text-info"><b><%= wallet.address %></b></td>
+                <td><%= link_to 'Show', wallet, class: 'btn btn-default' %></td>
+              </tr>
+            <% end %>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-md-6 ">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title">Move to Vest</h4>
+          <p class="text-warning"> Note that your money is Vested for a month, during that time you cannot withdraw
+            it </p>
+        </div>
+        <div class="card-body">
+          <div class="authform">
+
+            <%= form_tag(controller: "transaction", action: "invest", method: "post") do %>
+
+              <div class="form-group">
+                <%= label_tag :send_amount %>
+                <%= text_field_tag :send_amount, "", class: 'form-control' %>
+              </div>
+
+              <div class="actions">
+                <%= submit_tag "Transfer", data: {confirm: "Are you sure ? "}, class: 'btn btn-success' %>
+              </div>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+      <div class="card ">
+        <div class="card-header ">
+          <h4 class="card-title">Transfer</h4>
+          <p class="text-warning"> We cannot undo a transaction once its transferred!! double check your address before clicking the transfer button </p>
+        </div>
+        <div class="card-body ">
+          <div class="authform">
+
+            <%= form_tag( controller: "transaction", action: "create", method: "post") do %>
+              <div class="form-group">
+                <%= label_tag :wallet_address %>
+                <%= text_field_tag :wallet_address,"", class: 'form-control' %>
+              </div>
+
+              <div class="form-group">
+                <%= label_tag :send_amount %>
+                <%= text_field_tag :send_amount,"", class: 'form-control' %>
+              </div>
+
+              <div class="actions">
+                <%= submit_tag "Transfer", data: { confirm: "Are you sure ? " }, class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Transactions</h5>
+        </div>
+        <div class="card-body">
+          <table class="table table-responsive">
+
+            <tbody>
+              <% @transactions.each do |transaction| %>
+                <tr>
+                  <td><span><b><%= transaction['category'].capitalize %></b></span></td>
+                  <td><span
+                  <% if transaction['category'] == 'send' %>
+                  class="text-danger"
+                  <% else %>
+                  class="text-success"
+                  <% end %>
+                  >BERY <b><%= transaction['amount'] %></b></span></td>
+                  <td><span class="text-primary"><%= transaction['confirmations'] %></span></td>
+                  <td><span class="text-info"><b><%= transaction['address'] %></b></span></td>
+
+                  <td><a href="https://explorer.berycoin.com/tx/<%= transaction['txid'] %>"><%= transaction['txid'] %></a></td>
+                </tr>
+                
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <br>
+
+
+  </div>
+</div>
+
+<% content_for :head do %>
+  Wallet
+<% end %>
+<% content_for :short do %>
+  <%= " It's a place where you manage your wallets, please note that you can create 7 wallet addresses at maximum" %>
+<% end %>
+<% content_for :lins do %>
+  <a href=""> Total Balance: <b><%= @totalBalance %> BERY</b>  </a>
+  |
+  <a href=""> </i> <%= @wallets.count %> Addresses</a>
+<% end%>

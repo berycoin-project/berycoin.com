@@ -1,0 +1,27 @@
+<div class="authform">
+
+<%= form_for(article) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title , class: 'form-control'%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :content %>
+    <%= f.text_area :content , class: 'summernote form-control'%>
+  </div>
+  <div class="form-group">
+    <p class="card-title">Categories: e.g news, politics</p>
+    <%= f.text_field :category, class: "tagsinput", data: {color: "danger", role: "tagsinput"}, placeholder: "Type here" %>
+    <hr/>
+  </div>
+  <div class="">
+    <p class="card-title">Cover photo</p>
+    <%= f.file_field :article_cover, class: 'btn btn-neutral' %>
+  </div>
+  <div class="actions">
+    <%= f.submit class: 'btn btn-info' %>
+  </div>
+<% end %>
+</div>

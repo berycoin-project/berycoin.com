@@ -1,0 +1,34 @@
+<%= render 'vote_form' %>
+<% @votes.each do |v| %>
+    <div class="card card-plain">
+      <div class="card-header">
+        <div class="card-title">
+        <% if v.vote_type == "yes" %>
+        <%   class_name = 'success' %>
+        <%   vote_name  = 'in Favor' %>
+        <%   vote_symbol= '+' %>
+        <% else %>
+        <%   class_name = 'danger' %>
+        <%   vote_name  = 'Against' %>
+        <%   vote_symbol= '-' %>
+        <% end %>
+          <span class="badge badge-<%= class_name %>">
+            <i class="fa fa-gem"></i> <%= v.users.first.name %> voted <%= vote_name %> </span>
+        </div>
+
+        <div class="card-body">
+          <p>
+            <%= v.description %>
+          </p>
+        </div>
+        <div class="card-footer">
+          <h6>
+            <i class="ti-time"></i> Weight:
+            <b class="text-<%= class_name %>"><%= vote_symbol %><%= v.weight %></b>
+          </h6>
+        </div>
+      </div>
+    </div>
+<% end %>
+    <hr/>
+</div>

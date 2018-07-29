@@ -1,0 +1,28 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Show Record</h5>
+        </div>
+        <div class="card-body">
+
+        <p id="notice"><%= notice %></p>
+
+                <p>
+          <strong>Title:</strong>
+          <%= @task.title %>
+        </p>
+
+                <p>
+          <strong>Description:</strong>
+          <%= @task.description %>
+        </p>
+
+                <%= link_to 'Edit', edit_task_path(@task), class: "btn btn-info" %> |
+        <%= link_to 'Back', tasks_path, class: "btn btn-default"%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

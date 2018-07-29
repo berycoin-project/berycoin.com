@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title><%= content_for?(:title) ? yield(:title) : "Berycoin| Crypto Currency with a purpose" %></title>
+    <meta name="description" content="<%= content_for?(:description) ? yield(:description) : 'Berycoin is Proof of Stake crypto currency' %>">
+
+    <!-- Favicon Icon -->
+    <link rel="shortcut icon" type="image/x-icon" href="../ico_assets/images/favicon.png">
+    <!-- Animation CSS -->
+    <link rel="stylesheet" href="../ico_assets/css/animate.css">
+    <!-- Latest Bootstrap min CSS -->
+    <link rel="stylesheet" href="../ico_assets/bootstrap/css/bootstrap.min.css">
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="../ico_assets/css/ionicons.min.css">
+    <!--- owl carousel CSS-->
+    <link rel="stylesheet" href="../ico_assets/owlcarousel/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../ico_assets/owlcarousel/css/owl.theme.css">
+    <!-- Magnific Popup CSS -->
+    <link rel="stylesheet" href="../ico_assets/css/magnific-popup.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="../ico_assets/css/style.css">
+    <link rel="stylesheet" href="../ico_assets/css/responsive.css">
+    <%= csrf_meta_tags %>
+</head>
+
+<body class="v_light" data-spy="scroll" data-offset="110">
+<!-- LOADER -->
+<!-- div class="preloader">
+    <div id="g-spinner" class="loading">
+        <div class="circle c1"></div>
+        <div class="circle c2"></div>
+        <div class="circle c3"></div>
+        <div class="circle c4"></div>
+    </div>
+</div>
+<!-- END LOADER -->
+<!-- START HEADER -->
+<%= render 'layouts/menu' %>
+<%= yield %>
+<!-- START FOOTER SECTION -->
+<%= render 'layouts/footer' %>
+<!-- END FOOTER SECTION -->
+
+<a href="#" class="scrollup btn-default animation" data-animation="zoomIn" data-animation-delay="0.1s" style="display: none;"><i class="ion-ios-arrow-up"></i></a>
+
+<!-- Latest jQuery -->
+<script src="../ico_assets/js/jquery-1.12.4.min.js"></script>
+<!-- Latest compiled and minified Bootstrap -->
+<script src="../ico_assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- owl-carousel min js  -->
+<script src="../ico_assets/owlcarousel/js/owl.carousel.min.js"></script>
+<!-- magnific-popup min js  -->
+<script src="../ico_assets/js/magnific-popup.min.js"></script>
+<!-- waypoints min js  -->
+<script src="../ico_assets/js/waypoints.min.js"></script>
+<!-- parallax js  -->
+<script src="../ico_assets/js/parallax.js"></script>
+<!-- countdown js  -->
+<script src="../ico_assets/js/jquery.countdown.min.js"></script>
+<!-- particles min js  -->
+<script src="../ico_assets/js/particles.min.js"></script>
+<!-- scripts js -->
+<script src="../ico_assets/js/scripts.js"></script>
+<script type="text/javascript">function add_chatinline(){var hccid=60193217;var nt=document.createElement("script");nt.async=true;nt.src="https://mylivechat.com/chatinline.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
+            add_chatinline(); </script>
+            <!--Chat button will appear here-->
+
+<!--Add the following script at the bottom of the web page (before </body></html>)-->
+<script type="text/javascript">function add_chatbutton(){var hccid=60193217;var nt=document.createElement("script");nt.async=true;nt.src="https://www.mylivechat.com/chatbutton.aspx?hccid="+hccid;var ct=document.getElementsByTagName("script")[0];ct.parentNode.insertBefore(nt,ct);}
+add_chatbutton();</script>
+</body>
+
+</html>

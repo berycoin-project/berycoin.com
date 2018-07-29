@@ -1,0 +1,46 @@
+<div class="card">
+  <div class="card-header ">
+    <h4 class="card-title">Votes -
+      <small class="description">show your support to this project by voting in favor</small>
+    </h4>
+    <p> This project requires
+      <b class="text-primary">10,000</b> voting weight in
+      <b class="text-success">favor</b> in order to get approved </p>
+  </div>
+  <div class="card-body">
+    <%= form_for @vote, url: project_votes_path(@project.id) do |f| %>
+    <div class="row">
+        <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-body">
+            <div class="form-group">
+                <%= f.text_area :description, class: 'form-control', placeholder: 'Why are you voting on this project? tell briefly' %>
+            </div>
+                <p class="text-left">
+                Vote Type
+                </p>
+                <div class="col-sm-10 checkbox-radios">
+                <div class="form-check form-check-radio">
+                    <%= f.hidden_field :weight, value: '2000' %>
+                    <label class="form-check-label">
+                    <%= f.radio_button :vote_type, "yes", checked: 'checked', class: "form-check-input"%>
+                    <span class="form-check-sign"></span>
+                    Favor
+                    </label>
+                    <label class="form-check-label">
+                    <%= f.radio_button :vote_type, "no", class: "form-check-input"%>
+                    <span class="form-check-sign"></span>
+                    Against
+                    </label>
+                </div>
+                </div>
+                <div class="actions">
+                <%= f.submit class: 'btn btn-info' %>
+               </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <% end %>
+    </br>
+    </br>

@@ -1,0 +1,10 @@
+<%# navigation styled for Bootstrap 3.0 %>
+
+  <li <% if current_page?(root_path) -%>class="active"<% end -%>>
+    <%= link_to root_path do %>
+      <i class="now-ui-icons design_app"></i>
+      <p> Dashboard </p>
+    <% end %>
+  </li>
+  <%= render 'layouts/navigation_links' %>
+

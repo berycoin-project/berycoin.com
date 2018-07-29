@@ -1,0 +1,154 @@
+<li>
+  <%= link_to projects_path do %>
+    <i class="now-ui-icons objects_diamond"></i>
+    <p>Projects</p>
+  <% end %>
+</li>
+<li>
+  <%= link_to articles_path do %>
+    <i class="now-ui-icons business_chart-pie-36"></i>
+    <p>Articles</p>
+  <% end %>
+</li>
+<li>
+  <%= link_to courses_path do %>
+    <i class="now-ui-icons media-1_album"></i>
+    <p>Cources</p>
+  <% end %>
+</li>
+<li>
+  <a data-toggle="collapse" href="#Projects">
+    <i class="now-ui-icons design_image"></i>
+    <p>
+      Projects
+      <b class="caret"></b>
+    </p>
+  </a>
+  <div class="collapse " id="Projects">
+    <ul class="nav">
+      <li>
+        <a href="../examples/pages/pricing.html">
+          <span class="sidebar-mini-icon">TR</span>
+          <span class="sidebar-normal"> Trending </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/pages/timeline.html">
+          <span class="sidebar-mini-icon">H</span>
+          <span class="sidebar-normal"> Hot </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/pages/login.html">
+          <span class="sidebar-mini-icon">N</span>
+          <span class="sidebar-normal"> New </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/pages/register.html">
+          <span class="sidebar-mini-icon">AP</span>
+          <span class="sidebar-normal"> Approved </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/pages/lock.html">
+          <span class="sidebar-mini-icon">CL</span>
+          <span class="sidebar-normal"> Cancelled </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+<li>
+  <a data-toggle="collapse" href="#Posts">
+    <i class="now-ui-icons education_atom"></i>
+    <p>
+      Posts
+      <b class="caret"></b>
+    </p>
+  </a>
+  <div class="collapse " id="Posts">
+    <ul class="nav">
+      <li>
+        <a href="../examples/components/buttons.html">
+          <span class="sidebar-mini-icon">TR</span>
+          <span class="sidebar-normal"> Trending </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/grid.html">
+          <span class="sidebar-mini-icon">H</span>
+          <span class="sidebar-normal"> Hot </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/panels.html">
+          <span class="sidebar-mini-icon">New</span>
+          <span class="sidebar-normal"> New </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/sweet-alert.html">
+          <span class="sidebar-mini-icon">AP</span>
+          <span class="sidebar-normal"> Approved </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/notifications.html">
+          <span class="sidebar-mini-icon">RJ</span>
+          <span class="sidebar-normal"> Rejected </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+<li>
+  <a data-toggle="collapse" href="#Cources">
+    <i class="now-ui-icons design_bullet-list-67"></i>
+    <p>
+      Cources
+      <b class="caret"></b>
+    </p>
+  </a>
+  <div class="collapse " id="Cources">
+    <ul class="nav">
+      <li>
+        <a href="../examples/components/buttons.html">
+          <span class="sidebar-mini-icon">TR</span>
+          <span class="sidebar-normal"> Trending </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/grid.html">
+          <span class="sidebar-mini-icon">H</span>
+          <span class="sidebar-normal"> Hot </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/panels.html">
+          <span class="sidebar-mini-icon">New</span>
+          <span class="sidebar-normal"> New </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/sweet-alert.html">
+          <span class="sidebar-mini-icon">AP</span>
+          <span class="sidebar-normal"> Approved </span>
+        </a>
+      </li>
+      <li>
+        <a href="../examples/components/notifications.html">
+          <span class="sidebar-mini-icon">RJ</span>
+          <span class="sidebar-normal"> Rejected </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</li>
+<% if user_signed_in? %>
+  <li <% if current_page?(destroy_user_session_path) -%>class="active"<% end -%>><%= link_to destroy_user_session_path, :method=>'delete' do %>
+      <i class="now-ui-icons media-1_button-power"></i>
+      <span class="sidebar-normal">Logout</span>
+    <% end %>
+  </li>
+<% end %>

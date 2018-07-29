@@ -1,0 +1,10 @@
+<%# Rails flash messages styled for Bootstrap 3.0 %>
+<% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <script type="text/javascript" charset="utf-8">
+        $(function () {
+            demo.showNotification('top','right','fa fa-bullhorn','<%= msg %>','<%= name.to_s == 'notice' ? 'success' : 'danger' %>');
+        });
+    </script>
+  <% end %>
+<% end %>

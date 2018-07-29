@@ -1,0 +1,36 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-12 col-md-12">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Show Record</h5>
+        </div>
+        <div class="card-body">
+
+        <p id="notice"><%= notice %></p>
+
+                <p>
+          <strong>Name:</strong>
+          <%= @rank.name %>
+        </p>
+
+        <p>
+          <strong>Value:</strong>
+          <%= @rank.value %>
+        </p>
+        <p>
+          <strong>Reward:</strong>
+          <%= @rank.article_reward %>
+        </p>
+        <p>
+          <strong>Reward:</strong>
+          <%= @rank.project_reward %>
+        </p>
+
+                <%= link_to 'Edit', edit_rank_path(@rank) %> |
+        <%= link_to 'Back', ranks_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

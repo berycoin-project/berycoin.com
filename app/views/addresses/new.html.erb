@@ -1,0 +1,19 @@
+<div class="content">
+  <div class="row">
+    <div class="col-lg-4 col-md-6">
+      <div class="card card-chart">
+        <div class="card-header">
+          <h5 class="card-category">Insert New</h5>
+          <h2 class="card-title">New Address</h2>
+        </div>
+        <div class="card-body">
+            
+
+            <%= render 'form', address: @address %>
+
+            <%= link_to 'Back', addresses_path %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

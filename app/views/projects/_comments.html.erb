@@ -1,0 +1,29 @@
+      <div class="card">
+        <div class="card-header ">
+          <h4 class="card-title">Comments
+            <small class="description">See what people say about this project</small>
+          </h4>
+        </div>
+        <div class="card-body">
+            <% @comments.each do |c| %>
+            <div class="card card-plain">
+              <div class="card-header">
+                <div class="card-title">
+                  <img src="../my_assets/img/default-avatar.png" style="border-radius: 50%;height: 50px; width: 50px" alt="">
+                  <span class="badge badge-danger"><%= c.users.first.name %> says</span>
+                </div>
+                <div class="card-body">
+                  <p><i class="fa fa-comments"></i> <%= c.content %>
+                  </p>
+                </div>
+                <div class="card-footer">
+                  <h6>
+                    <i class="ti-time"></i><%= time_ago_in_words c.created_at %> ago
+                  </h6>
+                </div>
+              </div>
+            </div>
+            <hr/>
+            <% end %>
+        </div>
+      </div>
